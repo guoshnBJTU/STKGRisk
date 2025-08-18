@@ -1,0 +1,45 @@
+{
+    "patience": 10,
+    "delta": 1e-6,
+    "seed": 2023,
+    "data_type": "manhatton",
+
+    "all_data_filename_seg": "data/manhatton_v5/risk_dataset_v5.npz",
+    "adj_filename_seg": "data/manhatton_v5/adjs_v5.npz",
+    "mask_filename_seg": "data/manhatton_v5/top_risk_v5.npz",
+
+    "all_data_filename_zone": "data/manhatton_v5/risk_dataset_zone_v5.npz",
+    "adj_filename_zone": "data/manhatton_v5/adjs_zone_v5.npz",
+    "mask_filename_zone": "data/manhatton_v5/top_risk_zone_v5.npz",
+
+    "zone2segment_filename": "data/manhatton_v5/zone_adj_with_segment_v5.npz",
+    
+    "recent_prior": 3,
+    "week_prior": 4,
+    "one_day_period": 24,
+    "days_of_week": 7,
+    "pre_len": 1,
+
+    "train_rate": 0.6,
+    "valid_rate": 0.2,
+    "training_epoch": 200,
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "batch_size": 8,
+    "num_of_gru_layers": 1,
+    "gru_hidden_size": 64,
+    "gcn_num_filter": 32,
+    "num_experts": 4,
+    "squeeze_dim": 2,
+    "encoder_layer": 2,
+    "n_head": 4,
+    "dropout": 0.3,
+    "use_ASW": 0,
+    "use_all_fea": 1,
+    "prefer_depth": 1,
+    "trans": 1,
+    "tkg": "30",
+    "loss_weight": 0.4,
+    "decoder": "zip",
+    "component": 64
+}

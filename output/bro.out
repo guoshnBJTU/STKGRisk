@@ -1,0 +1,788 @@
+/workdir/tkg_and_risk/Supplementary_Code /workdir/tkg_and_risk
+{
+    "patience": 10,
+    "delta": 1e-06,
+    "seed": 2023,
+    "data_type": "brooklyn",
+    "all_data_filename_seg": "data/brooklyn_v5/risk_dataset_v5.npz",
+    "adj_filename_seg": "data/brooklyn_v5/adjs_v5.npz",
+    "mask_filename_seg": "data/brooklyn_v5/top_risk_v5.npz",
+    "all_data_filename_zone": "data/brooklyn_v5/risk_dataset_zone_v5.npz",
+    "adj_filename_zone": "data/brooklyn_v5/adjs_zone_v5.npz",
+    "mask_filename_zone": "data/brooklyn_v5/top_risk_zone_v5.npz",
+    "zone2segment_filename": "data/brooklyn_v5/zone_adj_with_segment_v5.npz",
+    "recent_prior": 3,
+    "week_prior": 4,
+    "one_day_period": 24,
+    "days_of_week": 7,
+    "pre_len": 1,
+    "train_rate": 0.6,
+    "valid_rate": 0.2,
+    "training_epoch": 200,
+    "optimizer": "adam",
+    "learning_rate": 0.0005,
+    "batch_size": 3,
+    "num_of_gru_layers": 1,
+    "gru_hidden_size": 128,
+    "gcn_num_filter": 16,
+    "num_experts": 64,
+    "squeeze_dim": 2,
+    "encoder_layer": 3,
+    "n_head": 8,
+    "dropout": 0.2,
+    "use_ASW": 0,
+    "use_all_fea": 1,
+    "prefer_depth": 1,
+    "trans": 1,
+    "tkg": "80",
+    "loss_weight": 0.5,
+    "decoder": "zip",
+    "component": 128
+}
+augment data with 3
+before aug directory ../data/brooklyn_v5/risk_dataset_v5.npz
+after aug directory ../data/brooklyn_v5/risk_dataset_v5_aug.npz
+decoder zip
+decoder is zip with loss weight 0.5
+Inverse transform the model output
+don't use adaptive sample weight
+prefer to depth representation
+use all features
+transform the origin feature
+Part top mask
+(1049,) [ 17   8  31 ...  75 146  31]
+part top mask: 29.45662535748332 % with 64
+zone2seg: 1723.0 (61, 1049)
+zone_mask_seg: 60.0 (61,)
+risk_mask_seg: 309.0 (1049,)
+risk_mask segment:  (1049,) 309.0 1.0 0.0 [0. 0. 0. ... 1. 1. 0.]
+risk_mask zone:  (61,) 60.0 1.0 0.0 [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1.]
+external feature:  (8760, 53, 1) (8760, 32, 1) (8760, 26, 1) (1, 17, 1049)
+external features: (5256, 53) (5256, 32) (5256, 26) (17, 1049)
+(4584, 7, 2, 1049) (4584, 1, 1049)
+feature: (4584, 7, 2, 1049) label: (4584, 1, 1049) time: (4584, 32) high feature: (1146, 7, 2, 1049) high label: (1146, 1, 1049)
+graph_x: (4584, 7, 2, 1049) high_graph_x: (1146, 7, 2, 1049)
+external features: (1752, 53) (1752, 32) (1752, 26) (17, 1049)
+(1080, 7, 2, 1049) (1080, 1, 1049)
+feature: (1080, 7, 2, 1049) label: (1080, 1, 1049) time: (1080, 32) high feature: (270, 7, 2, 1049) high label: (270, 1, 1049)
+graph_x: (1080, 7, 2, 1049) high_graph_x: (270, 7, 2, 1049)
+external features: (1752, 53) (1752, 32) (1752, 26) (17, 1049)
+(1080, 7, 2, 1049) (1080, 1, 1049)
+feature: (1080, 7, 2, 1049) label: (1080, 1, 1049) time: (1080, 32) high feature: (270, 7, 2, 1049) high label: (270, 1, 1049)
+graph_x: (1080, 7, 2, 1049) high_graph_x: (270, 7, 2, 1049)
+external feature:  (8760, 53, 1) (8760, 32, 1) (8760, 26, 1) (1, 17, 61)
+external features: (5256, 53) (5256, 32) (5256, 26) (17, 61)
+(4584, 7, 2, 61) (4584, 1, 61)
+feature: (4584, 7, 2, 61) label: (4584, 1, 61) time: (4584, 32) high feature: (1146, 7, 2, 61) high label: (1146, 1, 61)
+graph_x: (4584, 7, 2, 61) high_graph_x: (1146, 7, 2, 61)
+external features: (1752, 53) (1752, 32) (1752, 26) (17, 61)
+(1080, 7, 2, 61) (1080, 1, 61)
+feature: (1080, 7, 2, 61) label: (1080, 1, 61) time: (1080, 32) high feature: (270, 7, 2, 61) high label: (270, 1, 61)
+graph_x: (1080, 7, 2, 61) high_graph_x: (270, 7, 2, 61)
+external features: (1752, 53) (1752, 32) (1752, 26) (17, 61)
+(1080, 7, 2, 61) (1080, 1, 61)
+feature: (1080, 7, 2, 61) label: (1080, 1, 61) time: (1080, 32) high feature: (270, 7, 2, 61) high label: (270, 1, 61)
+graph_x: (1080, 7, 2, 61) high_graph_x: (270, 7, 2, 61)
+After concatenate (4584, 7, 2, 1110) (4584, 1, 1110)
+After concatenate (1080, 7, 2, 1110) (1080, 1, 1110)
+After concatenate (1080, 7, 2, 1110) (1080, 1, 1110)
+After concatenate (high) (270, 7, 2, 1110) (270, 1, 1110)
+use tkg model 100_1024_0.001_0.0_68_500_0.4_32_10_0.68_v5_80.chkpnt
+use normal_
+use normal_
+Let's use 3 GPUs!
+Mixtrue model DataParallel(
+  (module): ST_M3ZI(
+    (trans_seg): Sequential(
+      (0): Linear(in_features=19, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=19, bias=True)
+    )
+    (trans_zone): Sequential(
+      (0): Linear(in_features=19, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=19, bias=True)
+    )
+    (mmoe): MMOE(
+      (softmax): Softmax(dim=1)
+      (experts): ModuleList(
+        (0): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (1): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (2): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (3): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (4): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (5): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (6): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (7): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (8): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (9): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (10): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (11): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (12): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (13): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (14): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (15): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (16): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (17): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (18): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (19): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (20): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (21): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (22): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (23): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (24): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (25): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (26): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (27): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (28): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (29): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (30): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (31): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (32): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (33): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (34): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (35): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (36): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (37): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (38): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (39): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (40): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (41): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (42): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (43): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (44): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (45): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (46): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (47): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (48): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (49): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (50): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (51): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (52): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (53): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (54): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (55): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (56): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (57): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (58): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (59): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (60): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (61): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (62): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (63): Expert(
+          (fc1): Linear(in_features=111, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+      )
+    )
+    (STGN): STGN(
+      (road_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (zone_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (risk_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (risk_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (poi_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (poi_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (softmax): Softmax(dim=1)
+      (de_simple): DE_SimplE(
+        (ent_embs_h): Embedding(6702, 68)
+        (ent_embs_t): Embedding(6702, 68)
+        (rel_embs_f): Embedding(9, 100)
+        (rel_embs_i): Embedding(9, 100)
+        (m_freq_h): Embedding(6702, 32)
+        (m_freq_t): Embedding(6702, 32)
+        (d_freq_h): Embedding(6702, 32)
+        (d_freq_t): Embedding(6702, 32)
+        (y_freq_h): Embedding(6702, 32)
+        (y_freq_t): Embedding(6702, 32)
+        (freq_h): Embedding(6702, 32)
+        (freq_t): Embedding(6702, 32)
+        (m_phi_h): Embedding(6702, 32)
+        (m_phi_t): Embedding(6702, 32)
+        (d_phi_h): Embedding(6702, 32)
+        (d_phi_t): Embedding(6702, 32)
+        (y_phi_h): Embedding(6702, 32)
+        (y_phi_t): Embedding(6702, 32)
+        (phi_h): Embedding(6702, 32)
+        (phi_t): Embedding(6702, 32)
+        (m_amps_h): Embedding(6702, 32)
+        (m_amps_t): Embedding(6702, 32)
+        (d_amps_h): Embedding(6702, 32)
+        (d_amps_t): Embedding(6702, 32)
+        (y_amps_h): Embedding(6702, 32)
+        (y_amps_t): Embedding(6702, 32)
+        (amps_h): Embedding(6702, 32)
+        (amps_t): Embedding(6702, 32)
+      )
+      (depth_seg_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_zone_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_poi_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_poi_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_risk_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_risk_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=19, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=16, out_features=16, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (attention_seg): MultiHeadedAttention(
+        (linear_layers): ModuleList(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): Linear(in_features=48, out_features=48, bias=True)
+          (2): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (output_linear): Linear(in_features=48, out_features=48, bias=True)
+        (attention): Attention()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (feed_forward_seg): PositionwiseFeedForward(
+        (w_1): Linear(in_features=48, out_features=192, bias=True)
+        (w_2): Linear(in_features=192, out_features=48, bias=True)
+        (dropout): Dropout(p=0.2, inplace=False)
+        (activation): GELU()
+      )
+      (input_sublayer_seg): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (output_sublayer_seg): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (dropout_seg): Dropout(p=0.2, inplace=False)
+      (attention_zone): MultiHeadedAttention(
+        (linear_layers): ModuleList(
+          (0): Linear(in_features=48, out_features=48, bias=True)
+          (1): Linear(in_features=48, out_features=48, bias=True)
+          (2): Linear(in_features=48, out_features=48, bias=True)
+        )
+        (output_linear): Linear(in_features=48, out_features=48, bias=True)
+        (attention): Attention()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (feed_forward_zone): PositionwiseFeedForward(
+        (w_1): Linear(in_features=48, out_features=192, bias=True)
+        (w_2): Linear(in_features=192, out_features=48, bias=True)
+        (dropout): Dropout(p=0.2, inplace=False)
+        (activation): GELU()
+      )
+      (input_sublayer_zone): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (output_sublayer_zone): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+      (dropout_zone): Dropout(p=0.2, inplace=False)
+      (graph_gru_seg): GRU(48, 128, batch_first=True, dropout=0.2)
+      (graph_att_fc1_seg): Linear(in_features=128, out_features=1, bias=True)
+      (graph_att_fc2_seg): Linear(in_features=32, out_features=7, bias=True)
+      (graph_att_softmax_seg): Softmax(dim=-1)
+      (graph_gru_zone): GRU(48, 128, batch_first=True, dropout=0.2)
+      (graph_att_fc1_zone): Linear(in_features=128, out_features=1, bias=True)
+      (graph_att_fc2_zone): Linear(in_features=32, out_features=7, bias=True)
+      (graph_att_softmax_zone): Softmax(dim=-1)
+      (message_share_seg): Sequential(
+        (0): Linear(in_features=128, out_features=128, bias=True)
+        (1): ReLU()
+      )
+      (message_share_zone): Sequential(
+        (0): Linear(in_features=128, out_features=128, bias=True)
+        (1): ReLU()
+      )
+    )
+    (fcn_seg): Sequential(
+      (0): Linear(in_features=1049, out_features=262, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=262, out_features=1049, bias=True)
+    )
+    (fcn_zone): Sequential(
+      (0): Linear(in_features=61, out_features=15, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=15, out_features=61, bias=True)
+    )
+    (hypernet_seg): Hypernet(
+      (activation): Tanh()
+      (first_linear): Linear(in_features=128, out_features=256, bias=False)
+      (linear_layers): ModuleList()
+    )
+    (hypernet_zone): Hypernet(
+      (activation): Tanh()
+      (first_linear): Linear(in_features=128, out_features=256, bias=False)
+      (linear_layers): ModuleList()
+    )
+    (get_pai): Conv2d(128, 1, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
+Number of Parameters: 14798228
+NAN cnt: 12552

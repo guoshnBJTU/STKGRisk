@@ -1,0 +1,748 @@
+/workdir/Supplementary_Code /workdir
+{
+    "patience": 10,
+    "delta": 1e-06,
+    "seed": 2023,
+    "data_type": "manhatton",
+    "all_data_filename_seg": "data/manhatton_v5/risk_dataset_v5.npz",
+    "adj_filename_seg": "data/manhatton_v5/adjs_v5.npz",
+    "mask_filename_seg": "data/manhatton_v5/top_risk_v5.npz",
+    "all_data_filename_zone": "data/manhatton_v5/risk_dataset_zone_v5.npz",
+    "adj_filename_zone": "data/manhatton_v5/adjs_zone_v5.npz",
+    "mask_filename_zone": "data/manhatton_v5/top_risk_zone_v5.npz",
+    "zone2segment_filename": "data/manhatton_v5/zone_adj_with_segment_v5.npz",
+    "recent_prior": 3,
+    "week_prior": 4,
+    "one_day_period": 24,
+    "days_of_week": 7,
+    "pre_len": 1,
+    "train_rate": 0.6,
+    "valid_rate": 0.2,
+    "training_epoch": 200,
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "batch_size": 8,
+    "num_of_gru_layers": 1,
+    "gru_hidden_size": 64,
+    "gcn_num_filter": 32,
+    "num_experts": 4,
+    "squeeze_dim": 2,
+    "encoder_layer": 2,
+    "n_head": 4,
+    "dropout": 0.3,
+    "use_ASW": 0,
+    "use_all_fea": 1,
+    "prefer_depth": 1,
+    "trans": 1,
+    "tkg": "30",
+    "loss_weight": 0.4,
+    "decoder": "zip",
+    "component": 64
+}
+augment data with 3
+before aug directory ../data/manhatton_v5/risk_dataset_v5.npz
+after aug directory ../data/manhatton_v5/risk_dataset_v5_aug.npz
+decoder zip
+decoder is zip with loss weight 0.4
+Inverse transform the model output
+don't use adaptive sample weight
+prefer to depth representation
+use all features
+transform the origin feature
+Part top mask
+(475,) [ 11 121  16  26  34  30 174   8   9   0  17 456 805  28 251 285  48  17
+ 428  44  73 142  56  42  19  48  49 197 153  73   5 200 356 165  75 136
+ 125 115  87  58  45 233  41 151  63  26 396 176  47  78  51  34 421  24
+  14  35  41   8  43  47 137 108  81  65 143 360 137 352 180 154  88  58
+ 190 149  32  42  18  12 558 287  54 287  18 158  14  14 276 184 127  68
+  25   8  87  33  16  31   9 210  39  50  84  43  54  61  41  20  66  88
+ 123  47  89  21 112 461  32 234   1 229 120 128 251 302 195  41  51 339
+ 104  38 355  16  55 187  90   8 171 151  93  58  20  34 243 256 148 208
+ 105 172  25  69 293  66   4 235 208 177 608 188 213 200  28   7  20  62
+  56  12  64 196   0  13 123  31  70  76 116  22 114 117  85  71   2 108
+  37  32  39  27  45  36  29 216   7  12  23  90  74   0 114 145  16 989
+   7  13  61  51  23 124  54 247  48   2 393  53  48 206   5 195 278   5
+ 121  73   0  76  31   4 243 127   6  71 121  38  99  22  11  41  34   0
+  44  12  58  40  31  18  37  20   2 451 153  24  28  72 193 263  28  87
+  46 307  94  41  28  37  80 150  24   2   9 194  13  87 224   2  10  39
+  60   3  72   0   6 115 339 233   6   8 189 716  39   2 226 204  71  21
+ 204  24  36   0   3  70  37 185 101   7  33  61  23 226  37  28  47 113
+  79  33  31 243  14  24  65   1  31 138 461  34  70  79  15  33  13 123
+  58  45  13  21  25  99 245 119 137  14  70 119  90  46  81 476 220  96
+  30  49  55 215   5  92  28  45  46   1  12  83  56 190 195  37   0   0
+  85  99 172   2 492  50  85  89 211 133   5 213  11  69  95 369 113  14
+   3  10 112 105 110  77 138  13  49 131 195 116   8 588   3  47  34  58
+ 168  74  29 343 190 212 125 152  62  44  88   5  30  32  48 152  69  18
+ 133 110   5  50   6   5  17  20 173  34 159  71  61  64   6 331  57  37
+   4  41   6 101  65  27  38  44  30 132   8  28  92 175  46 150 313  24
+  67  94 159   3   9  32  86  43   2  15  32  56 198   3 114 185  81  13
+ 104   7  66   1 453 111  29]
+part top mask: 53.89473684210526 % with 50
+zone2seg: 1049.0 (69, 475)
+zone_mask_seg: 64.0 (69,)
+risk_mask_seg: 256.0 (475,)
+risk_mask segment:  (475,) 256.0 1.0 0.0 [0. 1. 0. 0. 0. 0. 1. 0. 0. 0. 0. 1. 1. 0. 1. 1. 0. 0. 1. 0. 1. 1. 1. 0.
+ 0. 0. 0. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 1. 0. 1. 1. 0. 1. 1.
+ 0. 1. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 0. 0. 0. 0. 1. 1. 1. 1. 0. 1. 0. 0. 1. 1. 1. 1. 0. 0. 1. 0. 0. 0.
+ 0. 1. 0. 0. 1. 0. 1. 1. 0. 0. 1. 1. 1. 0. 1. 0. 1. 1. 0. 1. 0. 1. 1. 1.
+ 1. 1. 1. 0. 1. 1. 1. 0. 1. 0. 1. 1. 1. 0. 1. 1. 1. 1. 0. 0. 1. 1. 1. 1.
+ 1. 1. 0. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1. 1. 0. 0. 0. 1. 1. 0. 1. 1. 0. 0.
+ 1. 0. 1. 1. 1. 0. 1. 1. 1. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 1.
+ 1. 0. 1. 1. 0. 1. 0. 0. 1. 1. 0. 1. 1. 1. 0. 0. 1. 1. 0. 1. 0. 1. 1. 0.
+ 1. 1. 0. 1. 0. 0. 1. 1. 0. 1. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0.
+ 0. 0. 0. 1. 1. 0. 0. 1. 1. 1. 0. 1. 0. 1. 1. 0. 0. 0. 1. 1. 0. 0. 0. 1.
+ 0. 1. 1. 0. 0. 0. 1. 0. 1. 0. 0. 1. 1. 1. 0. 0. 1. 1. 0. 0. 1. 1. 1. 0.
+ 1. 0. 0. 0. 0. 1. 0. 1. 1. 0. 0. 1. 0. 1. 0. 0. 0. 1. 1. 0. 0. 1. 0. 0.
+ 1. 0. 0. 1. 1. 0. 1. 1. 0. 0. 0. 1. 1. 0. 0. 0. 0. 1. 1. 1. 1. 0. 1. 1.
+ 1. 0. 1. 1. 1. 1. 0. 0. 1. 1. 0. 1. 0. 0. 0. 0. 0. 1. 1. 1. 1. 0. 0. 0.
+ 1. 1. 1. 0. 1. 0. 1. 1. 1. 1. 0. 1. 0. 1. 1. 1. 1. 0. 0. 0. 1. 1. 1. 1.
+ 1. 0. 0. 1. 1. 1. 0. 1. 0. 0. 0. 1. 1. 1. 0. 1. 1. 1. 1. 1. 1. 0. 1. 0.
+ 0. 0. 0. 1. 1. 0. 1. 1. 0. 0. 0. 0. 0. 0. 1. 0. 1. 1. 1. 1. 0. 1. 1. 0.
+ 0. 0. 0. 1. 1. 0. 0. 0. 0. 1. 0. 0. 1. 1. 0. 1. 1. 0. 1. 1. 1. 0. 0. 0.
+ 1. 0. 0. 0. 0. 1. 1. 0. 1. 1. 1. 0. 1. 0. 1. 0. 1. 1. 0.]
+risk_mask zone:  (69,) 64.0 1.0 0.0 [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 0. 0. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0.
+ 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+external feature:  (8760, 51, 1) (8760, 32, 1) (8760, 26, 1) (1, 18, 475)
+external features: (5256, 51) (5256, 32) (5256, 26) (18, 475)
+(4584, 7, 2, 475) (4584, 1, 475)
+feature: (4584, 7, 2, 475) label: (4584, 1, 475) time: (4584, 32) high feature: (1146, 7, 2, 475) high label: (1146, 1, 475)
+graph_x: (4584, 7, 2, 475) high_graph_x: (1146, 7, 2, 475)
+external features: (1752, 51) (1752, 32) (1752, 26) (18, 475)
+(1080, 7, 2, 475) (1080, 1, 475)
+feature: (1080, 7, 2, 475) label: (1080, 1, 475) time: (1080, 32) high feature: (270, 7, 2, 475) high label: (270, 1, 475)
+graph_x: (1080, 7, 2, 475) high_graph_x: (270, 7, 2, 475)
+external features: (1752, 51) (1752, 32) (1752, 26) (18, 475)
+(1080, 7, 2, 475) (1080, 1, 475)
+feature: (1080, 7, 2, 475) label: (1080, 1, 475) time: (1080, 32) high feature: (270, 7, 2, 475) high label: (270, 1, 475)
+graph_x: (1080, 7, 2, 475) high_graph_x: (270, 7, 2, 475)
+external feature:  (8760, 51, 1) (8760, 32, 1) (8760, 26, 1) (1, 18, 69)
+external features: (5256, 51) (5256, 32) (5256, 26) (18, 69)
+(4584, 7, 2, 69) (4584, 1, 69)
+feature: (4584, 7, 2, 69) label: (4584, 1, 69) time: (4584, 32) high feature: (1146, 7, 2, 69) high label: (1146, 1, 69)
+graph_x: (4584, 7, 2, 69) high_graph_x: (1146, 7, 2, 69)
+external features: (1752, 51) (1752, 32) (1752, 26) (18, 69)
+(1080, 7, 2, 69) (1080, 1, 69)
+feature: (1080, 7, 2, 69) label: (1080, 1, 69) time: (1080, 32) high feature: (270, 7, 2, 69) high label: (270, 1, 69)
+graph_x: (1080, 7, 2, 69) high_graph_x: (270, 7, 2, 69)
+external features: (1752, 51) (1752, 32) (1752, 26) (18, 69)
+(1080, 7, 2, 69) (1080, 1, 69)
+feature: (1080, 7, 2, 69) label: (1080, 1, 69) time: (1080, 32) high feature: (270, 7, 2, 69) high label: (270, 1, 69)
+graph_x: (1080, 7, 2, 69) high_graph_x: (270, 7, 2, 69)
+After concatenate (4584, 7, 2, 544) (4584, 1, 544)
+After concatenate (1080, 7, 2, 544) (1080, 1, 544)
+After concatenate (1080, 7, 2, 544) (1080, 1, 544)
+After concatenate (high) (270, 7, 2, 544) (270, 1, 544)
+use tkg model 100_64_0.001_0.0_68_500_0.4_32_10_0.68_v5_30.chkpnt
+use normal_
+use normal_
+Let's use 2 GPUs!
+Mixtrue model DataParallel(
+  (module): ST_M3ZI(
+    (trans_seg): Sequential(
+      (0): Linear(in_features=20, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=20, bias=True)
+    )
+    (trans_zone): Sequential(
+      (0): Linear(in_features=20, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=20, bias=True)
+    )
+    (mmoe): MMOE(
+      (softmax): Softmax(dim=1)
+      (experts): ModuleList(
+        (0): Expert(
+          (fc1): Linear(in_features=109, out_features=256, bias=True)
+          (fc2): Linear(in_features=256, out_features=64, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (1): Expert(
+          (fc1): Linear(in_features=109, out_features=256, bias=True)
+          (fc2): Linear(in_features=256, out_features=64, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (2): Expert(
+          (fc1): Linear(in_features=109, out_features=256, bias=True)
+          (fc2): Linear(in_features=256, out_features=64, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+        (3): Expert(
+          (fc1): Linear(in_features=109, out_features=256, bias=True)
+          (fc2): Linear(in_features=256, out_features=64, bias=True)
+          (relu): ReLU()
+          (dropout): Dropout(p=0.3, inplace=False)
+        )
+      )
+    )
+    (STGN): STGN(
+      (road_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (zone_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (risk_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (risk_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (poi_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (poi_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (softmax): Softmax(dim=1)
+      (de_simple): DE_SimplE(
+        (ent_embs_h): Embedding(6424, 68)
+        (ent_embs_t): Embedding(6424, 68)
+        (rel_embs_f): Embedding(9, 100)
+        (rel_embs_i): Embedding(9, 100)
+        (m_freq_h): Embedding(6424, 32)
+        (m_freq_t): Embedding(6424, 32)
+        (d_freq_h): Embedding(6424, 32)
+        (d_freq_t): Embedding(6424, 32)
+        (y_freq_h): Embedding(6424, 32)
+        (y_freq_t): Embedding(6424, 32)
+        (freq_h): Embedding(6424, 32)
+        (freq_t): Embedding(6424, 32)
+        (m_phi_h): Embedding(6424, 32)
+        (m_phi_t): Embedding(6424, 32)
+        (d_phi_h): Embedding(6424, 32)
+        (d_phi_t): Embedding(6424, 32)
+        (y_phi_h): Embedding(6424, 32)
+        (y_phi_t): Embedding(6424, 32)
+        (phi_h): Embedding(6424, 32)
+        (phi_t): Embedding(6424, 32)
+        (m_amps_h): Embedding(6424, 32)
+        (m_amps_t): Embedding(6424, 32)
+        (d_amps_h): Embedding(6424, 32)
+        (d_amps_t): Embedding(6424, 32)
+        (y_amps_h): Embedding(6424, 32)
+        (y_amps_t): Embedding(6424, 32)
+        (amps_h): Embedding(6424, 32)
+        (amps_t): Embedding(6424, 32)
+      )
+      (depth_seg_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_zone_gcn): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_poi_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_poi_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_risk_gcn_seg): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (depth_risk_gcn_zone): ModuleList(
+        (0): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=20, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+        (1): GCN_Layer(
+          (gcn_layer): Sequential(
+            (0): Linear(in_features=32, out_features=32, bias=True)
+            (1): ReLU()
+          )
+        )
+      )
+      (attention_seg): MultiHeadedAttention(
+        (linear_layers): ModuleList(
+          (0): Linear(in_features=96, out_features=96, bias=True)
+          (1): Linear(in_features=96, out_features=96, bias=True)
+          (2): Linear(in_features=96, out_features=96, bias=True)
+        )
+        (output_linear): Linear(in_features=96, out_features=96, bias=True)
+        (attention): Attention()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (feed_forward_seg): PositionwiseFeedForward(
+        (w_1): Linear(in_features=96, out_features=384, bias=True)
+        (w_2): Linear(in_features=384, out_features=96, bias=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (activation): GELU()
+      )
+      (input_sublayer_seg): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (output_sublayer_seg): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (dropout_seg): Dropout(p=0.3, inplace=False)
+      (attention_zone): MultiHeadedAttention(
+        (linear_layers): ModuleList(
+          (0): Linear(in_features=96, out_features=96, bias=True)
+          (1): Linear(in_features=96, out_features=96, bias=True)
+          (2): Linear(in_features=96, out_features=96, bias=True)
+        )
+        (output_linear): Linear(in_features=96, out_features=96, bias=True)
+        (attention): Attention()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (feed_forward_zone): PositionwiseFeedForward(
+        (w_1): Linear(in_features=96, out_features=384, bias=True)
+        (w_2): Linear(in_features=384, out_features=96, bias=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (activation): GELU()
+      )
+      (input_sublayer_zone): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (output_sublayer_zone): SublayerConnection(
+        (norm): LayerNorm()
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+      (dropout_zone): Dropout(p=0.3, inplace=False)
+      (graph_gru_seg): GRU(96, 64, batch_first=True, dropout=0.3)
+      (graph_att_fc1_seg): Linear(in_features=64, out_features=1, bias=True)
+      (graph_att_fc2_seg): Linear(in_features=32, out_features=7, bias=True)
+      (graph_att_softmax_seg): Softmax(dim=-1)
+      (graph_gru_zone): GRU(96, 64, batch_first=True, dropout=0.3)
+      (graph_att_fc1_zone): Linear(in_features=64, out_features=1, bias=True)
+      (graph_att_fc2_zone): Linear(in_features=32, out_features=7, bias=True)
+      (graph_att_softmax_zone): Softmax(dim=-1)
+      (message_share_seg): Sequential(
+        (0): Linear(in_features=64, out_features=64, bias=True)
+        (1): ReLU()
+      )
+      (message_share_zone): Sequential(
+        (0): Linear(in_features=64, out_features=64, bias=True)
+        (1): ReLU()
+      )
+    )
+    (fcn_seg): Sequential(
+      (0): Linear(in_features=475, out_features=118, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=118, out_features=475, bias=True)
+    )
+    (fcn_zone): Sequential(
+      (0): Linear(in_features=69, out_features=17, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=17, out_features=69, bias=True)
+    )
+    (hypernet_seg): Hypernet(
+      (activation): Tanh()
+      (first_linear): Linear(in_features=64, out_features=128, bias=False)
+      (linear_layers): ModuleList()
+    )
+    (hypernet_zone): Hypernet(
+      (activation): Tanh()
+      (first_linear): Linear(in_features=64, out_features=128, bias=False)
+      (linear_layers): ModuleList()
+    )
+    (get_pai): Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
+Number of Parameters: 6440626
+NAN cnt: 6601
+global step: 1, epoch: 1, batch: 1, training loss: 3629.500488, time: 26.21s
+global step: 2, epoch: 1, batch: 2, training loss: 3045.110840, time: 2.29s
+global step: 3, epoch: 1, batch: 3, training loss: 1583.801636, time: 2.28s
+global step: 4, epoch: 1, batch: 4, training loss: 1781.878418, time: 2.22s
+global step: 5, epoch: 1, batch: 5, training loss: 1797.283447, time: 2.31s
+global step: 6, epoch: 1, batch: 6, training loss: 1984.857300, time: 2.10s
+global step: 7, epoch: 1, batch: 7, training loss: 1906.125977, time: 2.28s
+global step: 8, epoch: 1, batch: 8, training loss: 1542.861572, time: 2.18s
+global step: 9, epoch: 1, batch: 9, training loss: 1603.233643, time: 2.23s
+global step: 10, epoch: 1, batch: 10, training loss: 1628.176636, time: 2.18s
+global step: 11, epoch: 1, batch: 11, training loss: 1283.588623, time: 2.20s
+global step: 12, epoch: 1, batch: 12, training loss: 1407.486328, time: 2.18s
+global step: 13, epoch: 1, batch: 13, training loss: 1377.312378, time: 2.23s
+global step: 14, epoch: 1, batch: 14, training loss: 1349.327881, time: 2.49s
+global step: 15, epoch: 1, batch: 15, training loss: 1642.362183, time: 2.59s
+global step: 16, epoch: 1, batch: 16, training loss: 1016.924194, time: 1.90s
+global step: 17, epoch: 1, batch: 17, training loss: 1486.383789, time: 2.22s
+global step: 18, epoch: 1, batch: 18, training loss: 1167.157715, time: 1.98s
+global step: 19, epoch: 1, batch: 19, training loss: 1503.778198, time: 2.10s
+global step: 20, epoch: 1, batch: 20, training loss: 988.703247, time: 2.40s
+global step: 21, epoch: 1, batch: 21, training loss: 1238.793945, time: 1.89s
+global step: 22, epoch: 1, batch: 22, training loss: 1646.595459, time: 2.22s
+global step: 23, epoch: 1, batch: 23, training loss: 1773.901855, time: 1.98s
+global step: 24, epoch: 1, batch: 24, training loss: 1355.546631, time: 1.81s
+global step: 25, epoch: 1, batch: 25, training loss: 1077.648926, time: 1.70s
+global step: 26, epoch: 1, batch: 26, training loss: 1130.229858, time: 2.00s
+global step: 27, epoch: 1, batch: 27, training loss: 1240.698120, time: 2.00s
+global step: 28, epoch: 1, batch: 28, training loss: 1475.561157, time: 2.07s
+global step: 29, epoch: 1, batch: 29, training loss: 1258.660400, time: 2.12s
+global step: 30, epoch: 1, batch: 30, training loss: 1423.082275, time: 2.00s
+global step: 31, epoch: 1, batch: 31, training loss: 1439.318726, time: 1.90s
+global step: 32, epoch: 1, batch: 32, training loss: 1046.074951, time: 1.81s
+global step: 33, epoch: 1, batch: 33, training loss: 944.213623, time: 2.07s
+global step: 34, epoch: 1, batch: 34, training loss: 831.391479, time: 2.11s
+global step: 35, epoch: 1, batch: 35, training loss: 538.923035, time: 1.99s
+global step: 36, epoch: 1, batch: 36, training loss: 951.257690, time: 1.70s
+global step: 37, epoch: 1, batch: 37, training loss: 1160.752441, time: 1.80s
+global step: 38, epoch: 1, batch: 38, training loss: 741.153137, time: 1.93s
+global step: 39, epoch: 1, batch: 39, training loss: 1193.389526, time: 2.09s
+global step: 40, epoch: 1, batch: 40, training loss: 1050.076538, time: 1.89s
+global step: 41, epoch: 1, batch: 41, training loss: 1377.457275, time: 1.90s
+global step: 42, epoch: 1, batch: 42, training loss: 1026.666260, time: 1.93s
+global step: 43, epoch: 1, batch: 43, training loss: 1010.928711, time: 2.04s
+global step: 44, epoch: 1, batch: 44, training loss: 1247.430298, time: 1.70s
+global step: 45, epoch: 1, batch: 45, training loss: 766.414307, time: 2.06s
+global step: 46, epoch: 1, batch: 46, training loss: 1317.023438, time: 1.93s
+global step: 47, epoch: 1, batch: 47, training loss: 833.891602, time: 1.98s
+global step: 48, epoch: 1, batch: 48, training loss: 887.686340, time: 2.13s
+global step: 49, epoch: 1, batch: 49, training loss: 1171.552246, time: 2.00s
+global step: 50, epoch: 1, batch: 50, training loss: 824.986938, time: 2.06s
+global step: 51, epoch: 1, batch: 51, training loss: 991.437561, time: 2.02s
+global step: 52, epoch: 1, batch: 52, training loss: 917.520325, time: 1.88s
+global step: 53, epoch: 1, batch: 53, training loss: 881.207520, time: 2.14s
+global step: 54, epoch: 1, batch: 54, training loss: 1262.713135, time: 1.68s
+global step: 55, epoch: 1, batch: 55, training loss: 836.262390, time: 2.08s
+global step: 56, epoch: 1, batch: 56, training loss: 714.117920, time: 2.12s
+global step: 57, epoch: 1, batch: 57, training loss: 1095.958984, time: 2.01s
+global step: 58, epoch: 1, batch: 58, training loss: 1187.333252, time: 1.90s
+global step: 59, epoch: 1, batch: 59, training loss: 900.237000, time: 2.31s
+global step: 60, epoch: 1, batch: 60, training loss: 926.862244, time: 2.30s
+global step: 61, epoch: 1, batch: 61, training loss: 1132.257202, time: 2.80s
+global step: 62, epoch: 1, batch: 62, training loss: 879.882568, time: 2.39s
+global step: 63, epoch: 1, batch: 63, training loss: 1108.180054, time: 2.49s
+global step: 64, epoch: 1, batch: 64, training loss: 998.631653, time: 2.03s
+global step: 65, epoch: 1, batch: 65, training loss: 1106.909058, time: 2.39s
+global step: 66, epoch: 1, batch: 66, training loss: 907.799072, time: 2.20s
+global step: 67, epoch: 1, batch: 67, training loss: 1329.912109, time: 2.00s
+global step: 68, epoch: 1, batch: 68, training loss: 915.242432, time: 2.58s
+global step: 69, epoch: 1, batch: 69, training loss: 997.463745, time: 2.13s
+global step: 70, epoch: 1, batch: 70, training loss: 1065.773926, time: 2.51s
+global step: 71, epoch: 1, batch: 71, training loss: 929.396729, time: 2.28s
+global step: 72, epoch: 1, batch: 72, training loss: 1233.524414, time: 2.01s
+global step: 73, epoch: 1, batch: 73, training loss: 847.779541, time: 2.50s
+global step: 74, epoch: 1, batch: 74, training loss: 789.071167, time: 2.60s
+global step: 75, epoch: 1, batch: 75, training loss: 1128.275146, time: 2.48s
+global step: 76, epoch: 1, batch: 76, training loss: 1126.819946, time: 1.54s
+global step: 77, epoch: 1, batch: 77, training loss: 766.760620, time: 2.76s
+global step: 78, epoch: 1, batch: 78, training loss: 1213.185059, time: 2.10s
+global step: 79, epoch: 1, batch: 79, training loss: 811.176636, time: 2.61s
+global step: 80, epoch: 1, batch: 80, training loss: 1046.634155, time: 2.21s
+global step: 81, epoch: 1, batch: 81, training loss: 1012.995178, time: 2.20s
+global step: 82, epoch: 1, batch: 82, training loss: 681.564636, time: 2.19s
+global step: 83, epoch: 1, batch: 83, training loss: 764.254333, time: 2.50s
+global step: 84, epoch: 1, batch: 84, training loss: 1075.899658, time: 2.59s
+global step: 85, epoch: 1, batch: 85, training loss: 1004.072021, time: 1.79s
+global step: 86, epoch: 1, batch: 86, training loss: 878.090881, time: 2.20s
+global step: 87, epoch: 1, batch: 87, training loss: 1067.240356, time: 2.30s
+global step: 88, epoch: 1, batch: 88, training loss: 663.637329, time: 2.17s
+global step: 89, epoch: 1, batch: 89, training loss: 851.720215, time: 2.51s
+global step: 90, epoch: 1, batch: 90, training loss: 534.208679, time: 1.79s
+global step: 91, epoch: 1, batch: 91, training loss: 843.391541, time: 2.93s
+global step: 92, epoch: 1, batch: 92, training loss: 1333.460083, time: 2.49s
+global step: 93, epoch: 1, batch: 93, training loss: 814.828003, time: 2.58s
+global step: 94, epoch: 1, batch: 94, training loss: 790.679443, time: 1.71s
+global step: 95, epoch: 1, batch: 95, training loss: 1017.765808, time: 2.01s
+global step: 96, epoch: 1, batch: 96, training loss: 690.203430, time: 2.27s
+global step: 97, epoch: 1, batch: 97, training loss: 751.197815, time: 2.10s
+global step: 98, epoch: 1, batch: 98, training loss: 763.339294, time: 2.70s
+global step: 99, epoch: 1, batch: 99, training loss: 1134.806030, time: 1.60s
+global step: 100, epoch: 1, batch: 100, training loss: 1189.464355, time: 2.70s
+global step: 101, epoch: 1, batch: 101, training loss: 1051.563599, time: 2.79s
+global step: 102, epoch: 1, batch: 102, training loss: 1127.878174, time: 2.52s
+global step: 103, epoch: 1, batch: 103, training loss: 1050.528442, time: 2.21s
+global step: 104, epoch: 1, batch: 104, training loss: 854.184937, time: 2.29s
+global step: 105, epoch: 1, batch: 105, training loss: 855.253845, time: 2.66s
+global step: 106, epoch: 1, batch: 106, training loss: 780.072876, time: 2.82s
+global step: 107, epoch: 1, batch: 107, training loss: 986.473083, time: 2.45s
+global step: 108, epoch: 1, batch: 108, training loss: 1187.134766, time: 2.26s
+global step: 109, epoch: 1, batch: 109, training loss: 785.112000, time: 2.28s
+global step: 110, epoch: 1, batch: 110, training loss: 909.838501, time: 2.70s
+global step: 111, epoch: 1, batch: 111, training loss: 773.454224, time: 2.36s
+global step: 112, epoch: 1, batch: 112, training loss: 1002.857422, time: 2.06s
+global step: 113, epoch: 1, batch: 113, training loss: 1160.747314, time: 2.18s
+global step: 114, epoch: 1, batch: 114, training loss: 1258.881470, time: 1.90s
+global step: 115, epoch: 1, batch: 115, training loss: 830.634888, time: 2.50s
+global step: 116, epoch: 1, batch: 116, training loss: 1028.739014, time: 2.58s
+global step: 117, epoch: 1, batch: 117, training loss: 951.792236, time: 2.51s
+global step: 118, epoch: 1, batch: 118, training loss: 824.714722, time: 2.22s
+global step: 119, epoch: 1, batch: 119, training loss: 995.603821, time: 2.68s
+global step: 120, epoch: 1, batch: 120, training loss: 723.139648, time: 2.79s
+global step: 121, epoch: 1, batch: 121, training loss: 901.717407, time: 2.03s
+global step: 122, epoch: 1, batch: 122, training loss: 944.445190, time: 3.16s
+global step: 123, epoch: 1, batch: 123, training loss: 807.331055, time: 2.11s
+global step: 124, epoch: 1, batch: 124, training loss: 879.980591, time: 2.39s
+global step: 125, epoch: 1, batch: 125, training loss: 1023.639160, time: 1.73s
+global step: 126, epoch: 1, batch: 126, training loss: 805.264160, time: 2.19s
+global step: 127, epoch: 1, batch: 127, training loss: 1047.859985, time: 2.11s
+global step: 128, epoch: 1, batch: 128, training loss: 850.259583, time: 2.19s
+global step: 129, epoch: 1, batch: 129, training loss: 726.551636, time: 2.64s
+global step: 130, epoch: 1, batch: 130, training loss: 716.880249, time: 1.45s
+global step: 131, epoch: 1, batch: 131, training loss: 1124.674805, time: 2.32s
+global step: 132, epoch: 1, batch: 132, training loss: 765.442566, time: 2.00s
+global step: 133, epoch: 1, batch: 133, training loss: 822.239136, time: 3.01s
+global step: 134, epoch: 1, batch: 134, training loss: 740.125610, time: 3.09s
+global step: 135, epoch: 1, batch: 135, training loss: 932.840942, time: 2.79s
+global step: 136, epoch: 1, batch: 136, training loss: 709.958740, time: 3.28s
+global step: 137, epoch: 1, batch: 137, training loss: 641.499451, time: 2.93s
+global step: 138, epoch: 1, batch: 138, training loss: 765.294189, time: 2.51s
+global step: 139, epoch: 1, batch: 139, training loss: 1043.475830, time: 3.49s
+global step: 140, epoch: 1, batch: 140, training loss: 882.619751, time: 2.42s
+global step: 141, epoch: 1, batch: 141, training loss: 797.052795, time: 2.52s
+global step: 142, epoch: 1, batch: 142, training loss: 1206.133179, time: 2.70s
+global step: 143, epoch: 1, batch: 143, training loss: 988.349121, time: 2.67s
+global step: 144, epoch: 1, batch: 144, training loss: 813.727051, time: 2.81s
+global step: 145, epoch: 1, batch: 145, training loss: 534.711182, time: 2.59s
+global step: 146, epoch: 1, batch: 146, training loss: 767.287964, time: 2.88s
+global step: 147, epoch: 1, batch: 147, training loss: 955.517456, time: 3.51s
+global step: 148, epoch: 1, batch: 148, training loss: 1330.180664, time: 2.94s
+global step: 149, epoch: 1, batch: 149, training loss: 652.916077, time: 2.98s
+global step: 150, epoch: 1, batch: 150, training loss: 1004.361267, time: 3.29s
+global step: 151, epoch: 1, batch: 151, training loss: 658.362183, time: 3.12s
+global step: 152, epoch: 1, batch: 152, training loss: 973.562866, time: 2.23s
+global step: 153, epoch: 1, batch: 153, training loss: 1256.117188, time: 2.89s
+global step: 154, epoch: 1, batch: 154, training loss: 821.384766, time: 1.61s
+global step: 155, epoch: 1, batch: 155, training loss: 968.556519, time: 2.59s
+global step: 156, epoch: 1, batch: 156, training loss: 991.326782, time: 2.14s
+global step: 157, epoch: 1, batch: 157, training loss: 928.090942, time: 2.29s
+global step: 158, epoch: 1, batch: 158, training loss: 839.148621, time: 2.50s
+global step: 159, epoch: 1, batch: 159, training loss: 701.269043, time: 2.20s
+global step: 160, epoch: 1, batch: 160, training loss: 824.712219, time: 3.78s
+global step: 161, epoch: 1, batch: 161, training loss: 850.689026, time: 1.80s
+global step: 162, epoch: 1, batch: 162, training loss: 952.640259, time: 2.39s
+global step: 163, epoch: 1, batch: 163, training loss: 774.526978, time: 3.11s
+global step: 164, epoch: 1, batch: 164, training loss: 727.362671, time: 3.01s
+global step: 165, epoch: 1, batch: 165, training loss: 925.875305, time: 2.13s
+global step: 166, epoch: 1, batch: 166, training loss: 963.994629, time: 3.11s
+global step: 167, epoch: 1, batch: 167, training loss: 893.132202, time: 2.51s
+global step: 168, epoch: 1, batch: 168, training loss: 1170.767822, time: 3.08s
+global step: 169, epoch: 1, batch: 169, training loss: 729.887085, time: 2.99s
+global step: 170, epoch: 1, batch: 170, training loss: 847.692871, time: 2.40s
+global step: 171, epoch: 1, batch: 171, training loss: 1129.363525, time: 2.59s
+global step: 172, epoch: 1, batch: 172, training loss: 884.617249, time: 2.72s
+global step: 173, epoch: 1, batch: 173, training loss: 905.126526, time: 2.77s
+global step: 174, epoch: 1, batch: 174, training loss: 940.570984, time: 2.92s
+global step: 175, epoch: 1, batch: 175, training loss: 1014.575317, time: 2.69s
+global step: 176, epoch: 1, batch: 176, training loss: 764.366699, time: 2.91s
+global step: 177, epoch: 1, batch: 177, training loss: 784.179260, time: 2.27s
+global step: 178, epoch: 1, batch: 178, training loss: 928.113525, time: 3.21s
+global step: 179, epoch: 1, batch: 179, training loss: 567.679810, time: 2.40s
+global step: 180, epoch: 1, batch: 180, training loss: 855.804565, time: 2.03s
+global step: 181, epoch: 1, batch: 181, training loss: 917.125732, time: 2.32s
+global step: 182, epoch: 1, batch: 182, training loss: 784.150879, time: 2.09s
+global step: 183, epoch: 1, batch: 183, training loss: 625.393982, time: 2.38s
+global step: 184, epoch: 1, batch: 184, training loss: 558.146973, time: 1.90s
+global step: 185, epoch: 1, batch: 185, training loss: 783.553955, time: 2.63s
+global step: 186, epoch: 1, batch: 186, training loss: 869.353210, time: 3.34s
+global step: 187, epoch: 1, batch: 187, training loss: 753.771790, time: 2.89s
+global step: 188, epoch: 1, batch: 188, training loss: 795.799927, time: 2.32s
+global step: 189, epoch: 1, batch: 189, training loss: 639.941406, time: 1.56s
+global step: 190, epoch: 1, batch: 190, training loss: 827.663330, time: 2.08s
+global step: 191, epoch: 1, batch: 191, training loss: 797.317688, time: 3.49s
+global step: 192, epoch: 1, batch: 192, training loss: 675.247620, time: 2.70s
+global step: 193, epoch: 1, batch: 193, training loss: 1020.339722, time: 2.78s
+global step: 194, epoch: 1, batch: 194, training loss: 831.970093, time: 4.09s
+global step: 195, epoch: 1, batch: 195, training loss: 963.974854, time: 3.09s
+global step: 196, epoch: 1, batch: 196, training loss: 668.523438, time: 2.50s
+global step: 197, epoch: 1, batch: 197, training loss: 659.765747, time: 1.78s
+global step: 198, epoch: 1, batch: 198, training loss: 677.510986, time: 1.30s
+global step: 199, epoch: 1, batch: 199, training loss: 901.578308, time: 1.35s
+global step: 200, epoch: 1, batch: 200, training loss: 662.546692, time: 1.52s
+global step: 201, epoch: 1, batch: 201, training loss: 452.974091, time: 1.69s
+global step: 202, epoch: 1, batch: 202, training loss: 858.928528, time: 1.20s
+global step: 203, epoch: 1, batch: 203, training loss: 648.569824, time: 1.76s
+global step: 204, epoch: 1, batch: 204, training loss: 571.467285, time: 2.09s
+global step: 205, epoch: 1, batch: 205, training loss: 766.830811, time: 1.63s
+global step: 206, epoch: 1, batch: 206, training loss: 573.212158, time: 1.32s
+global step: 207, epoch: 1, batch: 207, training loss: 705.672058, time: 1.56s
+global step: 208, epoch: 1, batch: 208, training loss: 885.614380, time: 1.73s
+global step: 209, epoch: 1, batch: 209, training loss: 829.168396, time: 1.90s
+global step: 210, epoch: 1, batch: 210, training loss: 651.162292, time: 1.69s
+global step: 211, epoch: 1, batch: 211, training loss: 977.461182, time: 1.39s
+global step: 212, epoch: 1, batch: 212, training loss: 684.115845, time: 1.67s
+global step: 213, epoch: 1, batch: 213, training loss: 583.590454, time: 1.95s
+global step: 214, epoch: 1, batch: 214, training loss: 726.525757, time: 1.74s
+global step: 215, epoch: 1, batch: 215, training loss: 875.290833, time: 1.93s
+global step: 216, epoch: 1, batch: 216, training loss: 421.416321, time: 1.85s
+global step: 217, epoch: 1, batch: 217, training loss: 548.893738, time: 2.21s
+global step: 218, epoch: 1, batch: 218, training loss: 789.247253, time: 1.46s
+global step: 219, epoch: 1, batch: 219, training loss: 597.304077, time: 1.80s
+global step: 220, epoch: 1, batch: 220, training loss: 862.699280, time: 1.80s
+global step: 221, epoch: 1, batch: 221, training loss: 741.191284, time: 4.22s
+global step: 222, epoch: 1, batch: 222, training loss: 778.416931, time: 1.65s
+global step: 223, epoch: 1, batch: 223, training loss: 788.127441, time: 2.19s
+global step: 224, epoch: 1, batch: 224, training loss: 540.725525, time: 3.55s
+global step: 225, epoch: 1, batch: 225, training loss: 615.754089, time: 1.72s
+global step: 226, epoch: 1, batch: 226, training loss: 605.694824, time: 1.77s
+global step: 227, epoch: 1, batch: 227, training loss: 700.704834, time: 2.13s
+global step: 228, epoch: 1, batch: 228, training loss: 591.239807, time: 1.97s
+global step: 229, epoch: 1, batch: 229, training loss: 851.820679, time: 1.56s
+global step: 230, epoch: 1, batch: 230, training loss: 694.101868, time: 2.11s
+global step: 231, epoch: 1, batch: 231, training loss: 755.883911, time: 1.71s
+global step: 232, epoch: 1, batch: 232, training loss: 448.331177, time: 5.11s
+global step: 233, epoch: 1, batch: 233, training loss: 855.895447, time: 1.80s
+global step: 234, epoch: 1, batch: 234, training loss: 831.720947, time: 2.09s
+global step: 235, epoch: 1, batch: 235, training loss: 880.072021, time: 1.41s
+global step: 236, epoch: 1, batch: 236, training loss: 798.885681, time: 2.27s
+global step: 237, epoch: 1, batch: 237, training loss: 948.155518, time: 1.41s
+global step: 238, epoch: 1, batch: 238, training loss: 946.211548, time: 3.50s
+global step: 239, epoch: 1, batch: 239, training loss: 979.658691, time: 1.89s
+global step: 240, epoch: 1, batch: 240, training loss: 778.351990, time: 2.40s
+global step: 241, epoch: 1, batch: 241, training loss: 729.262512, time: 1.44s
+global step: 242, epoch: 1, batch: 242, training loss: 543.898560, time: 3.62s
+global step: 243, epoch: 1, batch: 243, training loss: 816.127075, time: 1.79s
+global step: 244, epoch: 1, batch: 244, training loss: 509.189392, time: 1.30s
+global step: 245, epoch: 1, batch: 245, training loss: 591.298767, time: 1.90s
+global step: 246, epoch: 1, batch: 246, training loss: 554.589050, time: 1.60s
+global step: 247, epoch: 1, batch: 247, training loss: 697.819763, time: 1.71s
+global step: 248, epoch: 1, batch: 248, training loss: 800.253784, time: 1.47s
+global step: 249, epoch: 1, batch: 249, training loss: 588.322144, time: 1.52s
+global step: 250, epoch: 1, batch: 250, training loss: 534.839172, time: 2.02s
+global step: 251, epoch: 1, batch: 251, training loss: 573.698425, time: 2.34s
+global step: 252, epoch: 1, batch: 252, training loss: 737.461060, time: 1.80s
+global step: 253, epoch: 1, batch: 253, training loss: 357.926025, time: 1.67s
+global step: 254, epoch: 1, batch: 254, training loss: 662.109558, time: 1.63s
+global step: 255, epoch: 1, batch: 255, training loss: 776.716797, time: 1.92s
+global step: 256, epoch: 1, batch: 256, training loss: 625.519287, time: 2.24s
+global step: 257, epoch: 1, batch: 257, training loss: 439.278107, time: 2.22s
+global step: 258, epoch: 1, batch: 258, training loss: 1200.628540, time: 1.90s
+global step: 259, epoch: 1, batch: 259, training loss: 488.015808, time: 1.42s
+global step: 260, epoch: 1, batch: 260, training loss: 472.519836, time: 2.64s
+global step: 261, epoch: 1, batch: 261, training loss: 489.127075, time: 2.17s
+global step: 262, epoch: 1, batch: 262, training loss: 534.507080, time: 1.73s
+global step: 263, epoch: 1, batch: 263, training loss: 542.277466, time: 2.31s
+global step: 264, epoch: 1, batch: 264, training loss: 846.316528, time: 1.71s
+global step: 265, epoch: 1, batch: 265, training loss: 531.435791, time: 1.79s
+global step: 266, epoch: 1, batch: 266, training loss: 600.972046, time: 1.96s
+global step: 267, epoch: 1, batch: 267, training loss: 511.228577, time: 1.52s
+global step: 268, epoch: 1, batch: 268, training loss: 542.829956, time: 1.59s
+global step: 269, epoch: 1, batch: 269, training loss: 580.243652, time: 2.02s
+global step: 270, epoch: 1, batch: 270, training loss: 895.228394, time: 1.38s
+global step: 271, epoch: 1, batch: 271, training loss: 588.372559, time: 1.72s
+global step: 272, epoch: 1, batch: 272, training loss: 657.739258, time: 2.67s
+global step: 273, epoch: 1, batch: 273, training loss: 850.881470, time: 2.12s
+global step: 274, epoch: 1, batch: 274, training loss: 549.725525, time: 2.17s
+global step: 275, epoch: 1, batch: 275, training loss: 629.714111, time: 2.81s
