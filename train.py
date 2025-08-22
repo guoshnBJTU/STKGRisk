@@ -27,7 +27,7 @@ sys.path.append(curPath)
 
 from lib.dataloader import generate_dataset
 from lib.early_stop import EarlyStopping
-from model.ST_M3ZI import ST_M3ZI
+from model.STKGRisk import STKGRisk
 from lib.utils import compute_loss, predict_and_evaluate
 
 parser = argparse.ArgumentParser()
@@ -392,8 +392,8 @@ def main(config):
 
         print(f"use tkg model {model_path}")
 
-        depth_adjs_path = f"data/{config['data_type']}_v5/tkg/depth_adjs_v5_{tkg}.npz"
-        kg_model_path = f"data/{config['data_type']}_v5/tkg/{model_path}"
+        depth_adjs_path = f"data/{config['data_type']}/tkg/depth_adjs_v5_{tkg}.npz"
+        kg_model_path = f"data/{config['data_type']}/tkg/{model_path}"
 
         if args.use_nni:
             depth_adjs_path = os.path.join(nni_dir, depth_adjs_path)
@@ -411,7 +411,7 @@ def main(config):
     elif config['data_type'] == 'manhatton':
         feature_dims = 2+18
         share_feaure = 51+32+26
-    ST_M3ZI_Model = ST_M3ZI(num_of_gru_layers, seq_len, pre_len,
+    STKGRisk_Model = STKGRisk(num_of_gru_layers, seq_len, pre_len,
                         gru_hidden_size, time_shape[1], feature_dims, share_feaure,
                         nums_of_filter, num_of_graph_node, squeeze_dim=squeeze_dim, component=component, zone2seg=zone2seg,
                         transform=trans, decoder=decoder, inverse=args.inverse, scaler=scaler,loss_weight=loss_weight,complicate=args.complicate,
@@ -422,16 +422,16 @@ def main(config):
     # multi gpu
     if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!",flush=True)
-        ST_M3ZI_Model = nn.DataParallel(ST_M3ZI_Model)
-    ST_M3ZI_Model.to(device)
-    print("Mixtrue model", ST_M3ZI_Model)
+        STKGRisk_Model = nn.DataParallel(STKGRisk_Model)
+    STKGRisk_Model.to(device)
+    print("Mixtrue model", STKGRisk_Model)
 
     num_of_parameters = 0
-    for _, parameters in ST_M3ZI_Model.named_parameters():
+    for _, parameters in STKGRisk_Model.named_parameters():
         num_of_parameters += np.prod(parameters.shape)
     print("Number of Parameters: {}".format(num_of_parameters), flush=True)
 
-    trainer = optim.Adam(ST_M3ZI_Model.parameters(), lr=learning_rate)
+    trainer = optim.Adam(STKGRisk_Model.parameters(), lr=learning_rate)
     early_stop = EarlyStopping(patience=patience, delta=delta)
     
     adjs = np.load(adj_filename_seg, allow_pickle=True)
@@ -448,7 +448,7 @@ def main(config):
     risk_adj_zone = adjs["risk_adj_zone"]
     
     training(
-            ST_M3ZI_Model,
+            STKGRisk_Model,
             training_epoch,
             train_loader,
             val_loader,

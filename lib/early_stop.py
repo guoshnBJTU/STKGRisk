@@ -31,7 +31,7 @@ class EarlyStopping:
         self.best_pre = None
 
         self.early_stop = False
-        self.val_loss_min = np.Inf
+        self.val_loss_min = np.inf
         self.delta = delta
 
     def __call__(self, current_val_loss,
